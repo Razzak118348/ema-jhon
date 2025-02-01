@@ -8,19 +8,20 @@ import { Link, useLoaderData } from 'react-router-dom';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([])
+    const [itemPerPage, setItemPerPage] = useState(5)
 const {count }= useLoaderData()
-const itemsPerPage = 10;
+
 // console.log(count)
 
 /**
- * 1.GET the total number of products from the server
- *2. number of items per page
-    *3. calculate the number of pages
-    *4. load data for the first page
-    *5. display the page number
-    *6. load data based on the page number
+* 1.GET the total number of products from the server
+*2. number of items per page
+*3. calculate the number of pages
+*4. load data for the first page
+*5. display the page number
+*6. load data based on the page number
  */
-const numberOfPages = Math.ceil(count / itemsPerPage)
+const numberOfPages = Math.ceil(count / itemPerPage)
 console.log(numberOfPages)
 
 // const pages = [];
@@ -81,6 +82,11 @@ const pages =[...Array(numberOfPages).keys()];
         setCart([]);
         deleteShoppingCart();
     }
+const handleitemPerPage=(e)=>{
+const val= parseInt(e.target.value)
+console.log(val)
+setItemPerPage(val)
+}
 
     return (
         <div className='shop-container'>
@@ -114,6 +120,15 @@ const pages =[...Array(numberOfPages).keys()];
         )
     })
 }
+
+<select value={itemPerPage} onChange={handleitemPerPage}>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="30">30</option>
+    <option value="40">40</option>
+    <option value="50">50</option>
+</select>
 
             </div>
         </div>
