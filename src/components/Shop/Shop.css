@@ -35,3 +35,7 @@ margin-bottom: 40px;
 .pagination button{
     margin-right: 10px;
 }
+.btn-page{
+    background-color: yellow;
+    color: black;
+}
